@@ -1,28 +1,46 @@
 package com.epicode.spring_w1_d1.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 
 @Entity
-@Data
-@Getter
-@Setter
-@Table(name = "menu")
-public class Menu {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany (mappedBy = "menu")
-    List<Pizza> pizze;
+    @Column(name = "nome")
+    protected String nome;
+    @Column(name = "calorie")
+    protected int calorie;
+    @Column(name = "prezzo")
+    protected double prezzo;
 
-    @OneToMany (mappedBy = "menu")
-    List<Topping> toppings;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    @OneToMany (mappedBy = "menu")
-    List<Bevanda> bevande;
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public void setCalorie(int calorie) {
+        this.calorie = calorie;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getCalorie() {
+        return calorie;
+    }
+
+    public double getPrezzo() {
+        return prezzo;
+    }
 }

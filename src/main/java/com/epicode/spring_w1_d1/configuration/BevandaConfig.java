@@ -1,25 +1,72 @@
 package com.epicode.spring_w1_d1.configuration;
 
 import com.epicode.spring_w1_d1.entity.Bevanda;
-import com.github.javafaker.Faker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class BevandaConfig {
-    @Autowired
-    Faker faker;
 
     @Bean
-    @Scope("prototype")
-    public Bevanda creaBevanda(){
+    public Bevanda cola() {
         Bevanda bevanda = new Bevanda();
-        String[] bevandeNomi = {"Cola", "Aranciata", "Limonata", "Tonica", "Gazzosa", "Acqua Frizzante", "Acqua Naturale"};
-        bevanda.setNome(faker.options().option(bevandeNomi));
-        bevanda.setCalorie((int)faker.number().randomNumber());
-        bevanda.setPrezzo(faker.number().randomDouble(2,3,7));
+        bevanda.setNome("Cola");
+        bevanda.setCalorie(150);
+        bevanda.setPrezzo(3.0);
+        return bevanda;
+    }
+
+    @Bean
+    public Bevanda aranciata() {
+        Bevanda bevanda = new Bevanda();
+        bevanda.setNome("Aranciata");
+        bevanda.setCalorie(120);
+        bevanda.setPrezzo(3.5);
+        return bevanda;
+    }
+
+    @Bean
+    public Bevanda limonata() {
+        Bevanda bevanda = new Bevanda();
+        bevanda.setNome("Limonata");
+        bevanda.setCalorie(100);
+        bevanda.setPrezzo(3.0);
+        return bevanda;
+    }
+
+    @Bean
+    public Bevanda tonica() {
+        Bevanda bevanda = new Bevanda();
+        bevanda.setNome("Tonica");
+        bevanda.setCalorie(80);
+        bevanda.setPrezzo(3.5);
+        return bevanda;
+    }
+
+    @Bean
+    public Bevanda gazzosa() {
+        Bevanda bevanda = new Bevanda();
+        bevanda.setNome("Gazzosa");
+        bevanda.setCalorie(90);
+        bevanda.setPrezzo(3.0);
+        return bevanda;
+    }
+
+    @Bean
+    public Bevanda acquaFrizzante() {
+        Bevanda bevanda = new Bevanda();
+        bevanda.setNome("Acqua Frizzante");
+        bevanda.setCalorie(0);
+        bevanda.setPrezzo(2.0);
+        return bevanda;
+    }
+
+    @Bean
+    public Bevanda acquaNaturale() {
+        Bevanda bevanda = new Bevanda();
+        bevanda.setNome("Acqua Naturale");
+        bevanda.setCalorie(0);
+        bevanda.setPrezzo(2.0);
         return bevanda;
     }
 }
